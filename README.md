@@ -3,7 +3,7 @@
     All things come to him who waits - provided he knows what he is waiting for.
     Woodrow T. Wilson
 
-Wilson is a promise based javascript module loader built on when.js.
+Wilson is a promise based javascript module loader built on jquery promises.
 
 ## Usage
 

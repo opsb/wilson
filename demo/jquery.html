@@ -15,20 +15,9 @@
 			        s.parentNode.insertBefore(t, s);
 			    }
 			};
-			// extremly dodgy amd shim to get whenjs working without amd, avert your eyes
-			var counter = 0;
-			window.define = function(factory) {
-				var global = (++counter == 0 ? "when" : "apply");
-				if(counter++ == 1) {
-					window.when = factory();
-				} else {
-					window.apply = factory();
-				}
-			};
-			window.define.amd = {};
 
-			loadScript("https://raw.github.com/cujojs/when/master/when.js");
-			loadScript("https://raw.github.com/cujojs/when/master/apply.js");
+			loadScript("http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js");
+
 			loadScript("../wilson.js");
 			loadScript("main.js");
 		</script>
