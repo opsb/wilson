@@ -1,15 +1,26 @@
 var wilson = (function(){
+	var adaptors = {
+		when: function(when){
+			return {
+				defer: when.defer,
+				whenAll: when.all
+			}
+		}
+	}
+
 	var registered = {};
+
+	var adaptor = adaptors.when(when);
 
 	function define(name, dependencies, definition){
 		var args = _resolveAll(dependencies);
 		args.push(function(exportedModule){ _define(name, exportedModule||{}) });
-		when.all(args, apply(definition));
+		adaptor.whenAll(args, apply(definition));
 	}
 
 	function require(dependencies, callback){
 		var args = _resolveAll(dependencies);
-		when.all(args, apply(callback));
+		adaptor.whenAll(args, apply(callback));
 	}
 
 	function _resolveAll(dependencies){
@@ -35,7 +46,7 @@ var wilson = (function(){
 
 	function _addPromisedDependency(name){
 		if(registered[name]) return;
-		registered[name] = when.defer();
+		registered[name] = adaptor.defer();
 		return;
 	}
 

@@ -8,7 +8,7 @@ wilson.define('config2', [], function(exportModule){
 	setTimeout(function(){
 		exportModule({
 			message: "world"
-		});			
+		});
 	}, 1000);
 });	
 
