@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js" async="false"></script>
+		<script>
+		    window.define = function(factory) {
+		        try{ delete window.define; } catch(e){ window.define = void 0; } // IE
+		        window.when = factory();
+		    };
+		    window.define.amd = {};
+		</script>
+		<script src="https://raw.github.com/cujojs/when/master/when.js" async="false"></script>
+		<script src="https://raw.github.com/cujojs/when/master/apply.js" async="false"></script>
+
+	</head>
+
+	<body>
+		<div id="message"></div>
+		<script src="../wilson.js" async="false"></script>
+		<script src="main.js" async="false"></script>
+	</body>
+</html>
