@@ -44,3 +44,7 @@ var wilson = (function(){
 		require: require
 	}
 })();
+
+if ( typeof window === "object" && typeof window.document === "object" ) {
+	window.wilson = wilson;
+}
