@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<script async="false">
+			// ensure scripts are loaded in correct order
 			var loadScript = function( url ) {
 			    if (url) {
 			        var doc = document,
@@ -31,9 +32,50 @@
 			loadScript("https://raw.github.com/opsb/wilson/master/wilson.js");
 			loadScript("https://raw.github.com/opsb/wilson/master/demo/main.js");
 		</script>
+		<style>
+			body {
+				text-align: center;
+			}
+
+			pre {
+				margin:0 auto;
+				text-align: left;
+				width:700px;
+			}
+		</style>
 	</head>
 
 	<body>
+		<h1>Wilsonjs demo</h1>
+		<h2>Wilson says</h2>
 		<div id="message"></div>
+
+		<h2>Code</h2>
+		<pre>
+wilson.register('config', [], function(define){		
+	define({
+		message: "hello"
+	});
+});
+
+wilson.register('config2', [], function(define){		
+	setTimeout(function(){
+		define({
+			message: "world"
+		});			
+	}, 1000);
+});	
+
+wilson.register('domReady', [], function(ready){		
+	window.onload(function(){
+		ready();
+	});
+});
+
+wilson.require(['config', 'config2', 'domReady'], function(config, config2){
+	document.getElementById('message').innerHTML = config.message + config2.message;
+});
+
+		</pre>
 	</body>
 </html>

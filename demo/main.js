@@ -12,6 +12,12 @@ wilson.register('config2', [], function(define){
 	}, 1000);
 });	
 
-wilson.require(['config', 'config2'], function(config, config2){
+wilson.register('domReady', [], function(ready){		
+	window.onload(function(){
+		ready();
+	});
+});
+
+wilson.require(['config', 'config2', 'domReady'], function(config, config2){
 	document.getElementById('message').innerHTML = config.message + config2.message;
 });
