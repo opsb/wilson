@@ -22,7 +22,7 @@ Wilson is a promise based javascript module loader built on when.js.
 	});
 
 	wilson.register('domReady', [], function(domReady){
-		$(document).ready(domReady());
+		$(document).ready(domReady);
 	});
 
 	wilson.require(['config', 'config2', 'domReady'], function(config, config2){
