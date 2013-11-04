@@ -1,7 +1,8 @@
 requirejs.config({
     "paths": {
-      "when": "bower_components/when/when"
+      "when": "bower_components/when/when",
+      "apply": "bower_components/when/apply"
     }
 });
 
-requirejs(["lib/main"]);
+requirejs(["main"]);
