@@ -12,10 +12,10 @@ wilson.register('config2', [], function(define){
 	}, 1000);
 });	
 
-wilson.register('domReady', [], function(ready){		
-	window.onload(function(){
+wilson.register('domReady', [], function(ready){
+	window.onload = function(){
 		ready();
-	});
+	};
 });
 
 wilson.require(['config', 'config2', 'domReady'], function(config, config2){
