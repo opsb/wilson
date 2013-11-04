@@ -1,18 +1,18 @@
-wilson.register('config', [], function(define){		
-	define({
+wilson.define('config', [], function(exportModule){		
+	exportModule({
 		message: "hello"
 	});
 });
 
-wilson.register('config2', [], function(define){		
+wilson.define('config2', [], function(exportModule){		
 	setTimeout(function(){
-		define({
+		exportModule({
 			message: "world"
 		});			
 	}, 1000);
 });	
 
-wilson.register('domReady', [], function(ready){
+wilson.define('domReady', [], function(ready){
 	window.onload = function(){
 		ready();
 	};

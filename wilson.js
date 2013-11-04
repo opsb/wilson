@@ -1,11 +1,11 @@
 var wilson = (function(){
 	var registered = {};
 
-	function register(name, dependencies, definition){
+	function define(name, dependencies, definition){
 		var args = _resolveAll(dependencies);
 		args.push(function(exportedModule){ _define(name, exportedModule||{}) });
 		when.all(args, apply(definition));
-	}		
+	}
 
 	function require(dependencies, callback){
 		var args = _resolveAll(dependencies);
@@ -40,7 +40,7 @@ var wilson = (function(){
 	}
 
 	return {
-		register: register,
+		define: define,
 		require: require
 	}
 })();

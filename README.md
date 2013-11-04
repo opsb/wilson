@@ -7,24 +7,27 @@ Wilson is a promise based javascript module loader built on when.js.
 
 ## Usage
 
-	wilson.register('config', [], function(define){
-		define({
+	wilson.define('config', [], function(exportModule){		
+		exportModule({
 			message: "hello"
 		});
 	});
 
-	wilson.register('config2', [], function(define){
+	wilson.define('config2', [], function(exportModule){		
 		setTimeout(function(){
-			define({
+			exportModule({
 				message: "world"
-			});
+			});			
 		}, 1000);
-	});
+	});	
 
-	wilson.register('domReady', [], function(domReady){
-		$(document).ready(domReady);
+	wilson.define('domReady', [], function(ready){
+		window.onload = function(){
+			ready();
+		};
 	});
 
 	wilson.require(['config', 'config2', 'domReady'], function(config, config2){
-		$('greeting').html(config.message + config2.message);
+		document.getElementById('message').innerHTML = config.message + config2.message;
 	});
+
