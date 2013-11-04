@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js" async="false"></script>
-		<script>
-		    window.define = function(factory) {
-		        try{ delete window.define; } catch(e){ window.define = void 0; } // IE
-		        window.when = factory();
-		    };
-		    window.define.amd = {};
-		</script>
-		<script src="https://raw.github.com/cujojs/when/master/when.js" async="false"></script>
-		<script src="https://raw.github.com/cujojs/when/master/apply.js" async="false"></script>
+		<script async="false">
+			var loadScript = function( url ) {
+			    if (url) {
+			        var doc = document,
+			        t = doc.createElement("script"),
+			        s = doc.getElementsByTagName("script")[0];
+			        t.type = "text/javascript";
+			        // Keep script order!
+			        t.async = false;
+			        t.src = url;
+			        s.parentNode.insertBefore(t, s);
+			    }
+			};
+			// extremly dodgy amd shim to get whenjs working without amd, avert your eyes
+			var counter = 0;
+			window.define = function(factory) {
+				var global = (++counter == 0 ? "when" : "apply");
+				if(counter++ == 1) {
+					window.when = factory();
+				} else {
+					window.apply = factory();
+				}
+			};
+			window.define.amd = {};
 
+			loadScript("https://raw.github.com/cujojs/when/master/when.js");
+			loadScript("https://raw.github.com/cujojs/when/master/apply.js");
+			loadScript("https://raw.github.com/opsb/wilson/master/wilson.js");
+			loadScript("https://raw.github.com/opsb/wilson/master/demo/main.js");
+		</script>
 	</head>
 
 	<body>
 		<div id="message"></div>
-		<script src="../wilson.js" async="false"></script>
-		<script src="main.js" async="false"></script>
 	</body>
 </html>

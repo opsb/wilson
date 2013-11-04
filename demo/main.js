@@ -1,17 +1,17 @@
 wilson.register('config', [], function(define){		
 	define({
-		message: "rar"
+		message: "hello"
 	});
 });
 
 wilson.register('config2', [], function(define){		
 	setTimeout(function(){
 		define({
-			message: "from me"
+			message: "world"
 		});			
 	}, 1000);
 });	
 
 wilson.require(['config', 'config2'], function(config, config2){
-	console.log(config.message + config2.message);
+	document.getElementById('message').innerHTML = config.message + config2.message;
 });
